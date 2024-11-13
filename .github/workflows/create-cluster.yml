@@ -4,11 +4,11 @@ on:
   workflow_call:
     inputs:
       config-path:
-        required: true
+        required: false
         type: string
     secrets:
       token:
-        required: true
+        required: false
 
 jobs:
   triage:
@@ -16,8 +16,4 @@ jobs:
     steps:
     - name: Create k8s Kind Cluster
       uses: helm/kind-action@v1
-
-      with:
-        repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.config-path }}
       
